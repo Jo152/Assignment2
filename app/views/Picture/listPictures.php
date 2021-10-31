@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>All of your pictures</title>
+	<title>All your pictures</title>
     <style>
         .wrapper {
             width: 90vw;

@@ -7,7 +7,7 @@ class DefaultController extends \App\core\Controller{
 	function index(){
 		$this->view('Default/index');
 	}
-
+	// write a method for Registration
 	function register(){
 		if(isset($_POST['action'])){
 
@@ -33,7 +33,7 @@ class DefaultController extends \App\core\Controller{
 			$this->view('User/register');
 		}
 	}
-
+	// write the method for the 2FA setup using the token auth and a user model.
 	function twofasetup(){
 		if(isset($_POST['action'])){
 
@@ -57,12 +57,13 @@ class DefaultController extends \App\core\Controller{
 			$this->view('User/twofasetup', $url);
 		}	
 	}
-
+	// generate the qr code w/ qrlib
 	function makeQRCode(){
 		$data = $_GET['data'];
 		\QRcode::png($data);
 	}
 
+	// login the user if the password and username match else redirect to login 
 	function login(){
 
 		if(isset($_POST['action'])){
@@ -92,6 +93,7 @@ class DefaultController extends \App\core\Controller{
 		}
 	}
 
+	// use a method to authenticate the user using sessions 
 	function validateLogin(){
 
 		if(isset($_POST['action'])){
@@ -113,12 +115,12 @@ class DefaultController extends \App\core\Controller{
 			$this->view('User/validateLogin');
 		}
 	}
-
+	// write a function to log the user out (destroy) and redirect to the base
 	function logout(){
 		session_destroy();
 		header('location:'.BASE.'/');
 	}
-
+	// applyig the filters for anthentication 
     #[\App\core\LoginFilter]
 	#[\App\core\ProfileFilter]
 	function somewhereSecure(){

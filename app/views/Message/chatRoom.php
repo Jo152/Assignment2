@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>ChatRoom w/<?=$data["receiver"]->first_name?></title>
+	<title>Messages w/<?=$data["receiver"]->first_name?></title>
     <style>
         body {
             justify-content: center;
@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-    <a href="<?=BASE."/Message"?>">Go back to Messages</a>
+    <a href="<?=BASE."/Message"?>">Go back to your Messages</a>
 
     <h3>You are chatting with <?=$data["receiver"]->first_name?></h3>
     <div class="chatHolder">

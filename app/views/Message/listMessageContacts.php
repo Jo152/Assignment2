@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Your Message Contacts</title>
+	<title>Your Messaging Contacts</title>
     <style>
         .wrapper {
             display: flex;
@@ -15,11 +15,11 @@
     </style>
 </head>
 <body>
-    <a href="<?=BASE."/Default/somewhereSecure"?>">Go back to Home Page</a>
+    <a href="<?=BASE."/Default/somewhereSecure"?>">Go back to the Home Page</a>
     <div class="wrapper">
         <div>
             <h3>Who sent you a message:</h3>
-            <small>Click on a person to view the messages sent between you.</small>
+            <small>Click on a person to view the conversation.</small>
             <br />
             <?php
                 foreach ($data["senderAndMessage"] as &$value) {
@@ -46,7 +46,7 @@
         </div>
         <div>
             <h3>You sent a message to:</h3>
-            <small>Click on a person to view the messages sent between you.</small>
+            <small>Click on a person to view the conversation</small>
             <br />
             <?php
                 foreach ($data["receivers"] as &$receiver) {

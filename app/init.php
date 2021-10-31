@@ -5,13 +5,14 @@ session_start();
 require "autoload.php";
 require "core/phpqrcode/qrlib.php";
 
-// For Windows:
+// For Windows: (uncmoment when working at school)
  $path = getcwd();
  $path = preg_replace('/^.+\\\\htdocs\\\\/', '/', $path);
  $path = str_replace('\\', '/', $path);
  define("BASE", $path);
 
-// For Mac:
+
+// For Mac (uncomment when working at home):
 /*$path = getcwd();
 $path = preg_replace('/^.+\\/htdocs\\//', '/', $path);
 $path = str_replace("\\/", "/", $path);

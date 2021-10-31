@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Home Page</title>
+    <title>Home</title>
 </head>
 <body>
 	<p>Welcome <?= $_SESSION['username'] ?></p>
