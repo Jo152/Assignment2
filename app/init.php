@@ -1,7 +1,5 @@
 <?php
 session_start();
-//looks for the phpSESSIONID cookie
-//creates it if there is none
 require "autoload.php";
 
 // For Windows:
