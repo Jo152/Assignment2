@@ -37,19 +37,19 @@ class Message extends \App\core\Model{
 		return $stmt->fetch();
     }
 
-    public function getAllSendersForReceiver($receiverId) {
+    public function getAllFromSenders($receiverId) {
 		$stmt = self::$connection->prepare("SELECT DISTINCT sender FROM message WHERE receiver = :receiver_id");
 		$stmt->execute(['receiver_id'=>$receiverId]);
 		return $stmt->fetchAll();
     }
 
-    public function getAllReceiversForSender($senderId) {
+    public function getAllFromReceivers($senderId) {
 		$stmt = self::$connection->prepare("SELECT DISTINCT receiver FROM message WHERE sender = :sender_id");
 		$stmt->execute(['sender_id'=>$senderId]);
 		return $stmt->fetchAll();
     }
 
-    public function getAllMessagesBetweenSenderAndReceiver($user1Id, $user2Id) {
+    public function getAllMessages($user1Id, $user2Id) {
 		$stmt = self::$connection->prepare("SELECT * FROM message
         WHERE (receiver = :user2_id
             AND sender = :user1_id)
@@ -59,7 +59,7 @@ class Message extends \App\core\Model{
 		return $stmt->fetchAll();
     }
 
-    public function findUnreadAndToReadMessagesWithSender($senderId, $receiverId) {
+    public function unreadAndToReadMessages($senderId, $receiverId) {
 		$stmt = self::$connection->prepare("SELECT * FROM message
         WHERE (receiver = :receiver_id AND sender = :sender_id)
         AND (read_status = :reread_status OR read_status = :unread_status)");

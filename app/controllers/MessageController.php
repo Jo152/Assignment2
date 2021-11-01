@@ -9,14 +9,14 @@ class MessageController extends \App\core\Controller{
         $message = new \App\models\Message();
         $profile = new  \App\models\Profile();
         $userProfileId = $_SESSION["profile_id"];
-        $senderIds = $message->getAllSendersForReceiver($userProfileId);
-        $receiverIds = $message->getAllReceiversForSender($userProfileId);
+        $senderIds = $message->getAllFromSenders($userProfileId);
+        $receiverIds = $message->getAllFromReceivers($userProfileId);
         $senderAndMessage = [];
 
         foreach ($senderIds as &$value) {
 
             $sender = $profile->getProfileById((int)$value[0]);
-            $unreadMessages = $message->findUnreadAndToReadMessagesWithSender((int)$value[0], $userProfileId);
+            $unreadMessages = $message->unreadAndToReadMessages((int)$value[0], $userProfileId);
 
             if (!empty($unreadMessages)) {
 
@@ -58,7 +58,7 @@ class MessageController extends \App\core\Controller{
             $message->private_status= isset($_POST["public"]) ? PUBLIC_MSG : PRIVATE_MSG;
             $message->insert();
         }
-        $messages = $message->getAllMessagesBetweenSenderAndReceiver($receiverId, $currentUserId);
+        $messages = $message->getAllMessages($receiverId, $currentUserId);
         foreach ($messages as &$msg) {
             if ($msg["receiver"] == $currentUserId &&
                 ($msg["read_status"] == UNREAD || $msg["read_status"] == REREAD)) {

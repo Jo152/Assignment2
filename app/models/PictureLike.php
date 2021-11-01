@@ -40,7 +40,7 @@ class PictureLike extends \App\core\Model{
 		return count($stmt->fetchAll());
     }
 
-    public function hasUserLikedImage() {
+    public function userLikedImage() {
 		$stmt = self::$connection->prepare("SELECT * FROM picture_like
         WHERE picture_id = :picture_id
         AND profile_id = :profile_id");

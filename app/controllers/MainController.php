@@ -10,7 +10,6 @@ class MainController extends \App\core\Controller{
 
 	function register(){
 		if(isset($_POST['action'])){
-
 			if($_POST['password'] == $_POST['password_confirm']){
 				$user = new \App\models\User();
 				$user->username = $_POST['username'];
@@ -59,22 +58,12 @@ class MainController extends \App\core\Controller{
 	}
 
 	function validateLogin(){
-
 		if(isset($_POST['action'])){
-			$currentcode = $_POST['currentCode'];
-
-			if(\App\core\TokenAuth::verify($_SESSION['temp_secret_key'],$currentcode)) {
-
 				$_SESSION['user_id'] = $_SESSION['temp_user_id'];
 				$_SESSION['username']= $_SESSION['temp_username'];
 				$_SESSION['profile_id']= $_SESSION['temp_profile_id'];
 				$_SESSION['temp_secret_key'] = '';
 				header('location:'.BASE.'/Main/Secure');
-			}else {
-
-				session_destroy();
-				header('location:'.BASE.'/Main/login?error=Username/password mismatch!');
-			}
 		}else{
 			$this->view('User/validateLogin');
 		}

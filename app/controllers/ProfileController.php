@@ -60,7 +60,7 @@ class ProfileController extends \App\core\Controller{
             array_push($pictureWithLikes,
                 array("picture" => $otherUserPicture,
                 "numOfLikes" => $pictureLike->getImageLikeCount(),
-                "hasLiked" => $pictureLike->hasUserLikedImage()));
+                "hasLiked" => $pictureLike->userLikedImage()));
         }
 
         // public messages
