@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Image Upload</title>
+    <title>Upload an image file</title>
 </head>
 <body>
     <a href="<?=BASE."/Picture/index"?>">Go back</a>

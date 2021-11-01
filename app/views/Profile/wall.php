@@ -1,79 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?=$data['profile']->first_name?>'s wall</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .chatHolder {
-            border: 1px solid;
-            width: 960px;
-            height: 30vh;
-            overflow: scroll;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: auto;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-        .sender {
-            background-color: #a8bff7;
-            display: flex;
-            justify-content: flex-end;
-        }
-        .receiver {
-            background-color: #b8b8b8;
-            display: flex;
-        }
-        .receiver, .sender {
-            margin-bottom: 10px;
-            width: 90%;
-            font-size: 20px;
-        }
-        form {
-            display: flex;
-            justify-content: center;
-        }
-        .chatWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    <title>My Profile Wall</title>
 
-        .pictureWrapper {
-            width: 90vw;
-            margin: auto;
-        }
-        .imageHolder {
-            padding: 10px;
-            border-bottom: 1px solid;
-        }
-        body, .infoActionHolder, .imageHolder, .pictureWrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        p {
-            margin:3px 0px;
-        }
-        img {
-            max-height: 600px;
-            max-width: 1000px;
-        }
-
-    </style>
 </head>
 <body>
-<a href="<?=BASE."/Default/somewhereSecure"?>">Go back to Home Page</a>
-
-<div>
+<a href="<?=BASE."/Default/goSecure"?>">Home Page</a>
     <?php
         $profile = $data['profile'];
         echo "
@@ -86,11 +18,8 @@
             </ul>
         ";
     ?>
-</div>
 
-<div class="chatWrapper">
         <h2>Public messages sent to <?=$data["profile"]->first_name?></h2>
-        <div class="chatHolder">
             <?php
                 foreach ($data["messages"] as &$message) {
                     $messageObj = $message["message"];
@@ -101,14 +30,8 @@
                         echo "<small><a href=".BASE."/Message/delete/".$messageObj->message_id.">
                         Delete message</a></small>";
                     }
-                    echo "</div>"
-                    ;
                 }
             ?>
-        </div>
-</div>
-
-<div class="pictureWrapper">
         <?php
             echo "<h2>".$data['profile']->first_name."'s pictures</h2>";
             foreach($data["pictures"] as $value){
@@ -130,14 +53,9 @@
                 } else {                        
                     echo "<a href='".BASE."/PictureLike/like/$picture->picture_id/".$_SESSION["profile_id"]."'>
                         Like Picture</a>";
-                }
-                echo "
-                    </div>
-                </div>
-                ";
+                } 
             }
         ?>
-    </div>
 
 </body>
 </html>

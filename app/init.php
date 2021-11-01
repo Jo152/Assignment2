@@ -3,16 +3,14 @@ session_start();
 //looks for the phpSESSIONID cookie
 //creates it if there is none
 require "autoload.php";
-require "core/phpqrcode/qrlib.php";
 
-// For Windows: (uncmoment when working at school)
+// For Windows:
  $path = getcwd();
  $path = preg_replace('/^.+\\\\htdocs\\\\/', '/', $path);
  $path = str_replace('\\', '/', $path);
  define("BASE", $path);
 
-
-// For Mac (uncomment when working at home):
+// For Mac:
 /*$path = getcwd();
 $path = preg_replace('/^.+\\/htdocs\\//', '/', $path);
 $path = str_replace("\\/", "/", $path);

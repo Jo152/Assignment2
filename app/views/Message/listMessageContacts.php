@@ -1,25 +1,10 @@
 <html>
 <head>
-	<title>Your Messaging Contacts</title>
-    <style>
-        .wrapper {
-            display: flex;
-        }
-        .wrapper > div {
-            flex: 1;
-            height: 90vh;
-            overflow: scroll;
-            border-right: 1px solid;
-            padding: 10px;
-        }
-    </style>
+	<title>Message List</title>
 </head>
 <body>
-    <a href="<?=BASE."/Default/somewhereSecure"?>">Go back to the Home Page</a>
-    <div class="wrapper">
-        <div>
-            <h3>Who sent you a message:</h3>
-            <small>Click on a person to view the conversation.</small>
+    <h3>Message List</h3>    
+            <h3>Received messages:</h3>
             <br />
             <?php
                 foreach ($data["senderAndMessage"] as &$value) {
@@ -39,21 +24,17 @@
                                 Set status to \"ReRead\"</a>
                             ";
                         }
-                        echo "</ul><br/>";
                     }
                 }
             ?>
-        </div>
-        <div>
-            <h3>You sent a message to:</h3>
-            <small>Click on a person to view the conversation</small>
+            <h3>Sent messages:</h3>
             <br />
             <?php
                 foreach ($data["receivers"] as &$receiver) {
                     echo "<a href='".BASE."/Message/chatRoom/$receiver->profile_id'>$receiver->first_name</a><br/>";
                 }
             ?>
-        </div>
-    </div>
+            <br>
+            <a href="<?=BASE."/Default/goSecure"?>">Home Page</a>
 </body>
 </html>

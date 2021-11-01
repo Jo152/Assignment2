@@ -37,17 +37,12 @@ class PictureController extends \App\core\Controller {
 					$extension = $extension[$check['mime']];
 					$target_folder = 'uploads/';
 					$targetFile = uniqid() . ".$extension";
-					if (move_uploaded_file($_FILES['myImage']['tmp_name'], $target_folder . $targetFile)) {
 						$picture = new \App\models\Picture();
 						$picture->filename = $targetFile;
 						$picture->caption = $_POST['caption'];
                         $picture->profile_id = $_SESSION['profile_id'];
 						$picture->insert();
 						header('location:' . BASE . '/Picture/index/');
-					} else {
-						echo 'error';
-					}
-				} else {
                     echo 'error: Possibly wrong file type. The allowed file types are gif, jpeg, png';
                 } 
 			}

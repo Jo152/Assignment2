@@ -9,6 +9,6 @@
 
 		<input type="submit" name="action" value="Submit changes" />
 	</form>
-	<a href="<?=BASE?>/Default/index">Cancel</a>
+	<a href="<?=BASE?>/Default/goSecure">Cancel</a>
 </body>
 </html>

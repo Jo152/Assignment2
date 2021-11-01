@@ -1,6 +1,6 @@
 <?php
 namespace App\core;
-// TODO:implement the DB connection 
+
 class Model{
 	protected static $connection;
 

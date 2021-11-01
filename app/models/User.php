@@ -11,9 +11,13 @@ class User extends \App\core\Model{
 		parent::__construct();
 	}
 
-	public function isValid(){
+	
 
-		return !empty($this->username) && !password_verify('', $this->password_hash);
+	public function getAllUsers(){
+
+		$stmt = self::$connection->query("SELECT * FROM user");
+		$stmt->setFetchMode(\PDO::FETCH_GROUP|\PDO::FETCH_CLASS, "App\\models\\User");
+		return $stmt->fetchAll();
 	}
 
 	public function find($username){
@@ -41,23 +45,16 @@ class User extends \App\core\Model{
 			return false;
 	}
 
-	public function update2fa(){
-
-		$stmt = self::$connection->prepare("UPDATE user SET secret_key = :secret_key WHERE user_id = :user_id");
-		$stmt->execute(['secret_key'=>$this->secret_key,'user_id'=>$this->user_id]);
-	}
 
 	public function updatePassword(){
 		$stmt = self::$connection->prepare("UPDATE user SET password_hash = :password_hash
         WHERE user_id = :user_id");
 		$stmt->execute(['user_id'=>$this->user_id, 'password_hash'=>$this->password_hash]);
 	}
+	public function isValid(){
 
-	public function getAllUsers(){
-
-		$stmt = self::$connection->query("SELECT * FROM user");
-		$stmt->setFetchMode(\PDO::FETCH_GROUP|\PDO::FETCH_CLASS, "App\\models\\User");
-		return $stmt->fetchAll();
+		return !empty($this->username) && !password_verify('', $this->password_hash);
 	}
+	
 
 }

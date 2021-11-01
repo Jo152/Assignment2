@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Create a profile</title>
+	<title>Create profile</title>
 </head>
 <body>
 	<form method="post" action="">

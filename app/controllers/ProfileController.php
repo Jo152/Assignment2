@@ -13,7 +13,7 @@ class ProfileController extends \App\core\Controller{
             $profile->last_name = $_POST["last_name"];
             $profile->insert();
             $_SESSION['profile_id'] = $profile->profile_id;
-			header('location:'.BASE.'/Default/somewhereSecure');
+			header('location:'.BASE.'/Default/goSecure');
         } else {
             $this->view("Profile/createProfile");
         }
@@ -29,7 +29,7 @@ class ProfileController extends \App\core\Controller{
 			$profile->middle_name = $_POST["middle_name"];
 			$profile->last_name = $_POST["last_name"];
 			$profile->update();
-			header("location:".BASE."/Default/somewhereSecure");
+			header("location:".BASE."/Default/goSecure");
 		}else{
 			$this->view("Profile/edit", $profile);
 		}
@@ -46,7 +46,7 @@ class ProfileController extends \App\core\Controller{
         $userProfile = $profile->getProfileById($profile_id);
         if ($userProfile == false) {
             echo "404. A profile with that id does not exist. Sorry.
-                <a href='".BASE."/Default/somewhereSecure'>Go back home</a>
+                <a href='".BASE."/Default/goSecure'>Go back home</a>
             ";
             return;
         }

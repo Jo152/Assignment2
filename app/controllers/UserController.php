@@ -13,7 +13,7 @@ class UserController extends \App\core\Controller{
                 $user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $user->user_id = $_SESSION["user_id"];
                 $user->updatePassword();
-                header("location:".BASE."/Default/somewhereSecure");
+                header("location:".BASE."/Default/goSecure");
             } else {
                 header('location:'.BASE.'/User/changePassword?error=Passwords do not match!');
             }
